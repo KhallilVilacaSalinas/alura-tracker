@@ -1,5 +1,5 @@
 <template>
-  <div class="box">
+  <div class="box formulario">
     <div class="columns">
       <div class="column is-7" role="form" aria-label="Formulario para criacao de uma nova tarefa">
         <input
@@ -22,6 +22,7 @@
 
   export default defineComponent({
     name: 'FormularioComponent',
+    emits: ['aoSalvarTarefa'],
     components: {
       TemporizadorComponent
     },
@@ -32,10 +33,19 @@
     },
     methods: {
       finalizarTarefa (tempoDecorrido: number) {
+        this.$emit('aoSalvarTarefa', {
+          duracaoEmSegundos: tempoDecorrido,
+          descricao: this.descricao
+        })
         this.descricao = ''
-        console.log(tempoDecorrido);
-        console.log(this.descricao);
       }
     }
   })
 </script>
+
+<style>
+.formulario {
+  color: var(--texto-primario);
+  background-color: var(--bg-primario);
+}
+</style>
