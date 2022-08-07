@@ -31,7 +31,7 @@
     methods: {
       alterarTema() {
         this.modoEscuro = !this.modoEscuro;
-        this.$emit('aoTemaAlterado');
+        this.$emit('aoTemaAlterado', this.modoEscuro);
       }
     }
   });
